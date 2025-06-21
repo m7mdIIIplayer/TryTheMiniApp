@@ -1,0 +1,284 @@
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Mini Trading Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header
+    class="flex items-center justify-between px-5 py-4 border-b border-gray-700"
+  >
+    <div class="flex items-center space-x-3">
+      <img
+        alt="Platform logo with black background and golden text logo"
+        class="w-12 h-12 rounded"
+        height="48"
+        src="https://storage.googleapis.com/a1aa/image/8ca2a19e-a184-40a7-0ebb-1b8a9983c73b.jpg"
+        width="48"
+      />
+      <h1 class="text-yellow-400 font-semibold text-xl select-none">ScarFace</h1>
+    </div>
+    <div class="flex items-center space-x-3">
+      <img
+        alt="User profile avatar with dark background and golden user icon"
+        class="w-10 h-10 rounded-full object-cover"
+        height="40"
+        src="https://storage.googleapis.com/a1aa/image/3f61388c-1f70-4aaa-3fae-ec02b79c2476.jpg"
+        width="40"
+      />
+      <span class="font-medium text-gray-300 select-none">John Doe</span>
+    </div>
+  </header>
+  <!-- Main Content -->
+  <main
+    class="flex-grow px-5 py-6 max-w-4xl mx-auto w-full flex flex-col space-y-8 mb-16"
+  >
+    <!-- Balance and Actions -->
+    <section
+      class="bg-gray-800 rounded-lg p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0"
+    >
+      <div>
+        <p class="text-gray-400 text-sm">Current Balance</p>
+        <p class="text-yellow-400 font-semibold text-3xl">$12,450.75</p>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button
+          class="flex items-center space-x-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold px-4 py-2 rounded transition-colors duration-200"
+        >
+          <i class="fas fa-arrow-down"></i>
+          <span>Withdraw</span>
+        </button>
+        <button
+          class="flex items-center space-x-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold px-4 py-2 rounded transition-colors duration-200"
+        >
+          <i class="fas fa-arrow-up"></i>
+          <span>Deposit</span>
+        </button>
+        <button
+          aria-label="Toggle language"
+          class="flex items-center justify-center w-10 h-10 rounded bg-gray-700 hover:bg-gray-600 transition-colors duration-200"
+          id="langToggle"
+        >
+          <i class="fas fa-globe-americas text-yellow-400"></i>
+        </button>
+      </div>
+    </section>
+    <!-- Last 4 Trades Table -->
+    <section class="bg-gray-800 rounded-lg p-5 overflow-x-auto">
+      <h2 class="text-yellow-400 font-semibold text-lg mb-4 select-none">
+        Last 4 Trades
+      </h2>
+      <table class="w-full text-left table-auto border-collapse">
+        <thead>
+          <tr class="border-b border-gray-700 text-gray-400">
+            <th class="py-2 px-3 min-w-[90px]">Trade ID</th>
+            <th class="py-2 px-3 min-w-[70px]">Direction</th>
+            <th class="py-2 px-3 min-w-[60px]">Duration</th>
+            <th class="py-2 px-3 min-w-[70px]">Result</th>
+            <th class="py-2 px-3 min-w-[80px]">Pair</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="border-b border-gray-700 hover:bg-gray-700 transition-colors duration-150 cursor-default"
+          >
+            <td class="py-3 px-3 font-mono">#A12345</td>
+            <td class="py-3 px-3 text-yellow-400 font-semibold">Call</td>
+            <td class="py-3 px-3">5m</td>
+            <td class="py-3 px-3 text-green-500 font-semibold">Win</td>
+            <td class="py-3 px-3">EUR/USD</td>
+          </tr>
+          <tr
+            class="border-b border-gray-700 hover:bg-gray-700 transition-colors duration-150 cursor-default"
+          >
+            <td class="py-3 px-3 font-mono">#B67890</td>
+            <td class="py-3 px-3 text-red-500 font-semibold">Put</td>
+            <td class="py-3 px-3">10m</td>
+            <td class="py-3 px-3 text-red-500 font-semibold">Lose</td>
+            <td class="py-3 px-3">GBP/USD</td>
+          </tr>
+          <tr
+            class="border-b border-gray-700 hover:bg-gray-700 transition-colors duration-150 cursor-default"
+          >
+            <td class="py-3 px-3 font-mono">#C24680</td>
+            <td class="py-3 px-3 text-yellow-400 font-semibold">Call</td>
+            <td class="py-3 px-3">15m</td>
+            <td class="py-3 px-3 text-green-500 font-semibold">Win</td>
+            <td class="py-3 px-3">USD/JPY</td>
+          </tr>
+          <tr class="hover:bg-gray-700 transition-colors duration-150 cursor-default">
+            <td class="py-3 px-3 font-mono">#D13579</td>
+            <td class="py-3 px-3 text-red-500 font-semibold">Put</td>
+            <td class="py-3 px-3">1m</td>
+            <td class="py-3 px-3 text-green-500 font-semibold">Win</td>
+            <td class="py-3 px-3">AUD/USD</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer
+    class="bg-gray-800 border-t border-gray-700 flex justify-around py-3 text-yellow-400 text-xl select-none fixed bottom-0 left-0 w-full z-50"
+  >
+    <button
+      aria-label="Withdraw"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+    >
+      <i class="fas fa-arrow-down"></i>
+      <span class="text-xs font-semibold">Withdraw</span>
+    </button>
+    <button
+      aria-label="Deposit"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+    >
+      <i class="fas fa-arrow-up"></i>
+      <span class="text-xs font-semibold">Deposit</span>
+    </button>
+    <button
+      aria-label="Account"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+    >
+      <i class="fas fa-user-circle"></i>
+      <span class="text-xs font-semibold">Account</span>
+    </button>
+    <button
+      aria-label="Trade History"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+      onclick="window.location.href='TradeHistory2.html'"
+    >
+      <i class="fas fa-history"></i>
+      <span class="text-xs font-semibold">History</span>
+    </button>
+    <button
+      aria-label="Home"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+      onclick="window.location.href='HomePage2.html'"
+    >
+      <i class="fas fa-home"></i>
+      <span class="text-xs font-semibold">Home</span>
+    </button>
+  </footer>
+  <script>
+    const langToggle = document.getElementById("langToggle");
+    let isEnglish = true;
+    langToggle.addEventListener("click", () => {
+      isEnglish = !isEnglish;
+      if (isEnglish) {
+        langToggle.innerHTML =
+          '<i class="fas fa-globe-americas text-yellow-400"></i>';
+        document.querySelector("html").setAttribute("dir", "ltr");
+        document.querySelector("html").setAttribute("lang", "en");
+        document.querySelector("h1").textContent = "TradeSmart";
+        document.querySelector("section > div > p:first-child").textContent =
+          "Current Balance";
+        document.querySelector("section > div > p:nth-child(2)").textContent =
+          "$12,450.75";
+        document.querySelector(
+          "section > div + div > button:nth-child(1) span"
+        ).textContent = "Withdraw";
+        document.querySelector(
+          "section > div + div > button:nth-child(2) span"
+        ).textContent = "Deposit";
+        document.querySelector("main section:nth-child(2) h2").textContent =
+          "Last 4 Trades";
+        const rows = document.querySelectorAll("tbody tr");
+        rows[0].children[0].textContent = "#A12345";
+        rows[0].children[1].textContent = "Call";
+        rows[0].children[2].textContent = "5m";
+        rows[0].children[3].textContent = "Win";
+        rows[0].children[4].textContent = "EUR/USD";
+
+        rows[1].children[0].textContent = "#B67890";
+        rows[1].children[1].textContent = "Put";
+        rows[1].children[2].textContent = "10m";
+        rows[1].children[3].textContent = "Lose";
+        rows[1].children[4].textContent = "GBP/USD";
+
+        rows[2].children[0].textContent = "#C24680";
+        rows[2].children[1].textContent = "Call";
+        rows[2].children[2].textContent = "15m";
+        rows[2].children[3].textContent = "Win";
+        rows[2].children[4].textContent = "USD/JPY";
+
+        rows[3].children[0].textContent = "#D13579";
+        rows[3].children[1].textContent = "Put";
+        rows[3].children[2].textContent = "1m";
+        rows[3].children[3].textContent = "Win";
+        rows[3].children[4].textContent = "AUD/USD";
+
+        const footerButtons = document.querySelectorAll("footer button span");
+        footerButtons[0].textContent = "Withdraw";
+        footerButtons[1].textContent = "Deposit";
+        footerButtons[2].textContent = "Account";
+        footerButtons[3].textContent = "History";
+        footerButtons[4].textContent = "Home";
+      } else {
+        langToggle.innerHTML =
+          '<i class="fas fa-globe text-yellow-400"></i>';
+        document.querySelector("html").setAttribute("dir", "rtl");
+        document.querySelector("html").setAttribute("lang", "ar");
+        document.querySelector("h1").textContent = "تريد سمارت";
+        document.querySelector("section > div > p:first-child").textContent =
+          "الرصيد الحالي";
+        document.querySelector("section > div > p:nth-child(2)").textContent =
+          "$12,450.75";
+        document.querySelector(
+          "section > div + div > button:nth-child(1) span"
+        ).textContent = "سحب";
+        document.querySelector(
+          "section > div + div > button:nth-child(2) span"
+        ).textContent = "إيداع";
+        document.querySelector("main section:nth-child(2) h2").textContent =
+          "آخر 4 صفقات";
+        const rows = document.querySelectorAll("tbody tr");
+        rows[0].children[0].textContent = "#A12345";
+        rows[0].children[1].textContent = "شراء";
+        rows[0].children[2].textContent = "5د";
+        rows[0].children[3].textContent = "فوز";
+        rows[0].children[4].textContent = "يورو/دولار";
+
+        rows[1].children[0].textContent = "#B67890";
+        rows[1].children[1].textContent = "بيع";
+        rows[1].children[2].textContent = "10د";
+        rows[1].children[3].textContent = "خسارة";
+        rows[1].children[4].textContent = "جنيه/دولار";
+
+        rows[2].children[0].textContent = "#C24680";
+        rows[2].children[1].textContent = "شراء";
+        rows[2].children[2].textContent = "15د";
+        rows[2].children[3].textContent = "فوز";
+        rows[2].children[4].textContent = "دولار/ين";
+
+        rows[3].children[0].textContent = "#D13579";
+        rows[3].children[1].textContent = "بيع";
+        rows[3].children[2].textContent = "1د";
+        rows[3].children[3].textContent = "فوز";
+        rows[3].children[4].textContent = "أسترالي/دولار";
+
+        const footerButtons = document.querySelectorAll("footer button span");
+        footerButtons[0].textContent = "سحب";
+        footerButtons[1].textContent = "إيداع";
+        footerButtons[2].textContent = "الحساب";
+        footerButtons[3].textContent = "السجل";
+        footerButtons[4].textContent = "الرئيسية";
+      }
+    });
+  </script>
+</body>
+</html>

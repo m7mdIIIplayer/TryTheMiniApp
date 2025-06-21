@@ -1,0 +1,89 @@
+<html dir="rtl" lang="ar">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Scarface Trading
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-[#0c1420] min-h-screen flex flex-col justify-center items-center relative p-6">
+  <button aria-label="Switch Language" id="lang-switch" class="absolute top-6 left-6 text-[#e6b012] text-5xl focus:outline-none" type="button" title="Switch Language">
+   <i class="fas fa-globe-americas w-12 h-12"></i>
+  </button>
+  <h1 id="welcome" class="text-white text-5xl font-extrabold mb-2">
+   مرحبا بك
+  </h1>
+  <p id="description" class="text-white text-xl font-extrabold mb-6 max-w-xl text-center">
+   الى المنصة المصغرة الرسمية للتداول بنظام الباينري
+  </p>
+  <h2 id="with" class="text-white text-4xl font-extrabold mb-2">
+   مع
+  </h2>
+  <h3 class="text-white text-7xl font-extrabold mb-2">
+   SCARFACE
+  </h3>
+  <h4 class="text-[#e6b012] text-5xl font-extrabold mb-6">
+   TRADING
+  </h4>
+<button 
+  class="bg-[#e6b012] text-white text-2xl font-extrabold rounded-lg px-8 py-4 hover:bg-yellow-500 transition-colors"
+  onclick="window.location.href='WelcomePage2.html'"
+>
+  تداول معنا
+</button>
+
+  <script>
+    const langSwitch = document.getElementById('lang-switch');
+    const welcome = document.getElementById('welcome');
+    const description = document.getElementById('description');
+    const withText = document.getElementById('with');
+
+    // Arabic and English text content
+    const texts = {
+      ar: {
+        welcome: 'مرحبا بك',
+        description: 'الى المنصة المصغرة الرسمية للتداول بنظام الباينري',
+        with: 'مع',
+        dir: 'rtl'
+      },
+      en: {
+        welcome: 'Welcome',
+        description: 'to the official mini platform for trading with the binary system',
+        with: 'with',
+        dir: 'ltr'
+      }
+    };
+
+    // Current language state
+    let currentLang = 'ar';
+
+    langSwitch.addEventListener('click', () => {
+      if (currentLang === 'ar') {
+        currentLang = 'en';
+      } else {
+        currentLang = 'ar';
+      }
+
+      // Update text content
+      welcome.textContent = texts[currentLang].welcome;
+      description.textContent = texts[currentLang].description;
+      withText.textContent = texts[currentLang].with;
+
+      // Update direction attribute on html element
+      document.documentElement.dir = texts[currentLang].dir;
+
+      // Update lang attribute on html element
+      document.documentElement.lang = currentLang;
+    });
+  </script>
+ </body>
+</html>

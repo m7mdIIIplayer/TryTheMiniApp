@@ -1,0 +1,244 @@
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Mini Trading Platform Layout with Paginated Trade History</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header
+    class="flex items-center justify-between px-5 py-4 border-b border-gray-700"
+  >
+    <div class="flex items-center space-x-3">
+      <img
+        alt="Platform logo with black background and golden text logo"
+        class="w-12 h-12 rounded"
+        height="48"
+        src="https://storage.googleapis.com/a1aa/image/8ca2a19e-a184-40a7-0ebb-1b8a9983c73b.jpg"
+        width="48"
+      />
+      <h1 class="text-yellow-400 font-semibold text-xl select-none">ScarFace</h1>
+    </div>
+    <div class="flex items-center space-x-3">
+      <img
+        alt="User profile avatar with dark background and golden user icon"
+        class="w-10 h-10 rounded-full object-cover"
+        height="40"
+        src="https://storage.googleapis.com/a1aa/image/3f61388c-1f70-4aaa-3fae-ec02b79c2476.jpg"
+        width="40"
+      />
+      <span class="font-medium text-gray-300 select-none">John Doe</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main
+    class="flex-grow px-5 py-6 max-w-4xl mx-auto w-full flex flex-col space-y-8 overflow-auto"
+    id="main-content"
+    style="padding-bottom: 3rem;"
+  >
+    <section
+      class="bg-gray-800 rounded-lg p-5 overflow-x-auto flex flex-col"
+      aria-label="Trade History Section"
+    >
+      <h2 class="text-yellow-400 font-semibold text-lg mb-4 select-none">
+        Trade History
+      </h2>
+      <table class="w-full text-left table-auto border-collapse" role="table">
+        <thead>
+          <tr class="border-b border-gray-700 text-gray-400" role="row">
+            <th class="py-2 px-3 min-w-[90px]" role="columnheader" scope="col">
+              Trade ID
+            </th>
+            <th class="py-2 px-3 min-w-[70px]" role="columnheader" scope="col">
+              Direction
+            </th>
+            <th class="py-2 px-3 min-w-[60px]" role="columnheader" scope="col">
+              Duration
+            </th>
+            <th class="py-2 px-3 min-w-[70px]" role="columnheader" scope="col">
+              Result
+            </th>
+            <th class="py-2 px-3 min-w-[80px]" role="columnheader" scope="col">
+              Pair
+            </th>
+          </tr>
+        </thead>
+        <tbody id="trade-table-body" class="text-gray-200" role="rowgroup"></tbody>
+      </table>
+
+      <!-- Pagination Controls -->
+      <div
+        class="flex justify-center items-center space-x-6 mt-6 select-none"
+        role="navigation"
+        aria-label="Pagination Navigation"
+      >
+        <button
+          aria-label="Previous page"
+          class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 disabled:text-gray-600 disabled:cursor-not-allowed transition-colors duration-200"
+          id="prevPageBtn"
+          disabled
+          type="button"
+        >
+          <i class="fas fa-chevron-left text-lg"></i>
+          <span>Previous</span>
+        </button>
+        <span class="text-yellow-400 font-semibold" id="pageIndicator"
+          >Page 1 / 5</span
+        >
+        <button
+          aria-label="Next page"
+          class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors duration-200"
+          id="nextPageBtn"
+          type="button"
+        >
+          <span>Next</span>
+          <i class="fas fa-chevron-right text-lg"></i>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer
+    class="bg-gray-800 border-t border-gray-700 flex justify-around py-3 text-yellow-400 text-xl select-none fixed bottom-0 left-0 w-full z-50"
+  >
+    <button
+      aria-label="Withdraw"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+    >
+      <i class="fas fa-arrow-down"></i>
+      <span class="text-xs font-semibold">Withdraw</span>
+    </button>
+    <button
+      aria-label="Deposit"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+    >
+      <i class="fas fa-arrow-up"></i>
+      <span class="text-xs font-semibold">Deposit</span>
+    </button>
+    <button
+      aria-label="Account"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+    >
+      <i class="fas fa-user-circle"></i>
+      <span class="text-xs font-semibold">Account</span>
+    </button>
+    <button
+      aria-label="Trade History"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+      onclick="window.location.href='TradeHistory2.html'"
+    >
+      <i class="fas fa-history"></i>
+      <span class="text-xs font-semibold">History</span>
+    </button>
+    <button
+      aria-label="Home"
+      class="flex flex-col items-center space-y-1 hover:text-yellow-300 transition-colors duration-200"
+      onclick="window.location.href='HomePage2.html'"
+    >
+      <i class="fas fa-home"></i>
+      <span class="text-xs font-semibold">Home</span>
+    </button>
+  </footer>
+
+  <script>
+    (() => {
+      const trades = [];
+      const directions = ["Call", "Put"];
+      const results = ["Win", "Lose"];
+      const pairs = [
+        "EUR/USD",
+        "GBP/USD",
+        "USD/JPY",
+        "AUD/USD",
+        "USD/CAD",
+        "NZD/USD",
+        "USD/CHF",
+        "EUR/GBP",
+        "EUR/JPY",
+        "GBP/JPY",
+      ];
+      const durations = ["1m", "5m", "10m", "15m", "30m"];
+
+      // Generate 100 sample trades
+      for (let i = 1; i <= 100; i++) {
+        const trade = {
+          id: `#T${(10000 + i).toString().slice(1)}`,
+          direction: directions[Math.floor(Math.random() * directions.length)],
+          duration: durations[Math.floor(Math.random() * durations.length)],
+          result: results[Math.floor(Math.random() * results.length)],
+          pair: pairs[Math.floor(Math.random() * pairs.length)],
+        };
+        trades.push(trade);
+      }
+
+      const rowsPerPage = 20;
+      let currentPage = 1;
+      const totalPages = Math.ceil(trades.length / rowsPerPage);
+
+      const tbody = document.getElementById("trade-table-body");
+      const prevBtn = document.getElementById("prevPageBtn");
+      const nextBtn = document.getElementById("nextPageBtn");
+      const pageIndicator = document.getElementById("pageIndicator");
+
+      function renderPage(page) {
+        tbody.innerHTML = "";
+        const start = (page - 1) * rowsPerPage;
+        const end = Math.min(start + rowsPerPage, trades.length);
+        for (let i = start; i < end; i++) {
+          const t = trades[i];
+          const tr = document.createElement("tr");
+          tr.className =
+            "border-b border-gray-700 hover:bg-gray-700 transition-colors duration-150 cursor-default";
+          tr.innerHTML = `
+            <td class="py-3 px-3 font-mono">${t.id}</td>
+            <td class="py-3 px-3 font-semibold ${
+              t.direction === "Call" ? "text-yellow-400" : "text-red-500"
+            }">${t.direction}</td>
+            <td class="py-3 px-3">${t.duration}</td>
+            <td class="py-3 px-3 font-semibold ${
+              t.result === "Win" ? "text-green-500" : "text-red-500"
+            }">${t.result}</td>
+            <td class="py-3 px-3">${t.pair}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+        pageIndicator.textContent = `Page ${page} / ${totalPages}`;
+        prevBtn.disabled = page === 1;
+        nextBtn.disabled = page === totalPages;
+      }
+
+      prevBtn.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderPage(currentPage);
+        }
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderPage(currentPage);
+        }
+      });
+
+      renderPage(currentPage);
+    })();
+  </script>
+</body>
+</html>
